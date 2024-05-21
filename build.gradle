@@ -44,7 +44,3 @@ dependencies {
     implementation 'commons-codec:commons-codec:1.16.1'
     implementation 'com.google.zxing:javase:3.5.3'
 }
-
-tasks.named('test') {
-    useJUnitPlatform()
-}
