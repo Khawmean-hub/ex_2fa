@@ -14,5 +14,6 @@ public class UserRes {
     private String lastname;
     private String profile;
     private String role;
+    private boolean enable2fa;
     private String status;
 }

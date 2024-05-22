@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KosignBoardApplication {
+public class Ex2FaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(KosignBoardApplication.class, args);
+        SpringApplication.run(Ex2FaApplication.class, args);
     }
 
 }

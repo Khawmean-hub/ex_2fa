@@ -12,6 +12,7 @@ import java.io.IOException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/user")
+@CrossOrigin(origins = "*")
 public class UserController {
     private final UserService userService;
     @PutMapping("/update")
@@ -32,4 +33,7 @@ public class UserController {
 
     @PutMapping("/disable2fa")
     public Object disable2fa(@RequestParam String code) { return userService.disable2fa(code); }
+
+    @GetMapping("/verify")
+    public Object getProfile(@RequestParam String code) { return userService.verify2fa(code); }
 }

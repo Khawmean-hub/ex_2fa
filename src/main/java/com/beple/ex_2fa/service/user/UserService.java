@@ -4,7 +4,6 @@ import com.beple.ex_2fa.payload.BaseResponse;
 import com.beple.ex_2fa.payload.user.ResetPasswordReq;
 import com.beple.ex_2fa.payload.user.UserUpdateReq;
 import com.google.zxing.WriterException;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 
@@ -14,4 +13,5 @@ public interface UserService {
     BaseResponse get2fa() throws IOException, WriterException;
     BaseResponse enable2fa(String code) throws IOException;
     BaseResponse disable2fa(String code) ;
+    BaseResponse verify2fa(String code) ;
 }

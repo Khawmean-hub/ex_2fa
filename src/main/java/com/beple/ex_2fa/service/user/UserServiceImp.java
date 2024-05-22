@@ -46,6 +46,9 @@ public class UserServiceImp implements UserService{
 
     @Override
     public BaseResponse get2fa() throws IOException, WriterException {
+
+        if(AuthHelper.isEnable2fa()) return BaseResponse.builder().code("9999").message("Please Disable first").build();
+
         TwoFactorRes res = factorAuthService.get2Factor();
         User user = AuthHelper.getUser();
         user.setScrKey(res.getKey());
@@ -54,14 +57,14 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public BaseResponse enable2fa(String code) throws IOException {
+    public BaseResponse enable2fa(String code) {
         if(factorAuthService.verify2Factor(code)){
             User user = AuthHelper.getUser();
             user.setEnable2fa(true);
             userRepository.save(user);
             return BaseResponse.builder().build();
         }else{
-            return BaseResponse.builder().message("Invalid Code").build();
+            return BaseResponse.builder().code("9999").message("Invalid Code").build();
         }
     }
 
@@ -74,7 +77,16 @@ public class UserServiceImp implements UserService{
             userRepository.save(user);
             return BaseResponse.builder().build();
         }else{
-            return BaseResponse.builder().message("Invalid Code").build();
+            return BaseResponse.builder().code("9999").message("Invalid Code").build();
+        }
+    }
+
+    @Override
+    public BaseResponse verify2fa(String code) {
+        if(factorAuthService.verify2Factor(code)){
+            return BaseResponse.builder().build();
+        }else{
+            return BaseResponse.builder().code("9999").message("Invalid Code").build();
         }
     }
 }

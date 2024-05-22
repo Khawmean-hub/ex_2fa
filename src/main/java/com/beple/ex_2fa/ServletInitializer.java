@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(KosignBoardApplication.class);
+        return application.sources(Ex2FaApplication.class);
     }
 
 }
